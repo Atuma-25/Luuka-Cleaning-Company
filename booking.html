@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Book — YOUR COMPANY NAME</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <!-- Calendly embed widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">YOUR COMPANY NAME</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="booking.html" class="cta">Book Now</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container booking-page">
+    <h2>Book Your Cleaning</h2>
+    <p>Choose a date & time below. If you need payment at booking, connect Stripe/PayPal to your Calendly account (see README).</p>
+
+    <!-- Calendly inline widget -->
+    <div id="calendly-inline" style="min-width:320px;height:630px;"></div>
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      Calendly.initInlineWidget({
+        url: 'https://calendly.com/YOUR_CALENDLY_USERNAME/30min',
+        parentElement: document.getElementById('calendly-inline'),
+        prefill: {},
+        utm: {}
+      });
+    </script>
+
+    <p>If you prefer to pay a deposit, include a payment link in the confirmation email or enable Calendly payments (Stripe).</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year3"></span> YOUR COMPANY NAME</p>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
