@@ -29,14 +29,3 @@ Quick setup steps (launch in under 1 hour)
    - This template uses Formspree for contact handling. Sign up at https://formspree.io/, create a form, and replace the action URL.
    - If you prefer email notifications without third-party services, you'll need a backend; I can help with that.
 
-5. Customization:
-   - To accept deposits/payments during booking without Calendly payments, we can integrate Stripe Checkout + a tiny serverless function — ask me and I will produce the exact code.
-
-Need additional help?
----------------------
-If you'd like, I can:
-- Convert this into a WordPress theme/Elementor-ready package.
-- Add Stripe Checkout integration (serverless) so customers pay at booking.
-- Customize copy, pricing, and images for your brand.
-
-Enjoy! — I've packaged the site below for download and upload to your host.
