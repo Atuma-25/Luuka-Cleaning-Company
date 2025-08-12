@@ -14,7 +14,7 @@ What's included:
 Quick setup steps (launch in under 1 hour)
 -----------------------------------------
 1. Edit placeholders:
-   - Replace 'Luuka Cleaning Company', 6146718714, atumathomas@icloud.com, and 'Columbus, Ohio' in the HTML files.
+   - Replace 'Luuka Cleaning Company', atumathomas@icloud.com, and 'Columbus, Ohio' in the HTML files.
    - In booking.html, replace 'in person'.
    - In contact.html, replace the Formspree action URL with your Formspree form endpoint (or replace with another form handler).
 
