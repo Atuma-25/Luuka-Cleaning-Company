@@ -17,7 +17,7 @@
 # For more information on the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # For more samples to get started with GitHub Action workflows to deploy to Azure: https://github.com/Azure/actions-workflow-samples
 
-name: Deploy static site to Azure Web App
+name: Deploy website to Azure Web App
 
 on:
   push:
@@ -26,22 +26,48 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: your-app-name # Change to your Azure Web App name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'   # Root folder of your site
+  AZURE_WEBAPP_NAME: your-app-name  # Change this to your Azure Web App name
+  AZURE_WEBAPP_PACKAGE_PATH: '.'    # Path to your app (default root)
+  NODE_VERSION: '20.x'              # Node.js version (for booking system later)
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # No Node.js setup or npm install here — static site only
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Check if Node.js app
+        id: node_check
+        run: |
+          if [ -f "package.json" ]; then
+            echo "node_app=true" >> $GITHUB_ENV
+          else
+            echo "node_app=false" >> $GITHUB_ENV
+          fi
+
+      - name: Set up Node.js
+        if: env.node_app == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install and build (Node.js app only)
+        if: env.node_app == 'true'
+        run: |
+          npm install
+          npm run build --if-present
 
       - name: Deploy to Azure WebApp
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
