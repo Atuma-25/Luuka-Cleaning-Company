@@ -26,8 +26,8 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: your-app-name  # Change this to your Azure Web App name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'    # Path to your app (default root)
+  AZURE_WEBAPP_NAME: Luuka Cleaning Company  # Change this to your Azure Web App name
+  AZURE_WEBAPP_PACKAGE_PATH: 'luukacleaningc'    # Path to your app (default root)
   NODE_VERSION: '20.x'              # Node.js version (for booking system later)
 
 jobs:
